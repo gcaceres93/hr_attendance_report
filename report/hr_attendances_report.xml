@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hr_attendance_report.attendance_report">
+          <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                         <link rel="stylesheet" href="/hr_attendance_report/static/src/css/styles.css"/>
+                         <t t-set="i" t-value="0"/>
+                          <t t-set="total_worked_hours" t-value="0"/>
+                          <t t-set="total_overtime_hours" t-value="0"/>
+                        <div class="col-xs-12">
+                            <h3 class="title">Attendances Report By Employee</h3>
+                            <h5><span class="bold">Employee: </span> <span t-field="docs.employee_id"/> </h5>
+                            <table class="table table-stripped">
+                                <thead>
+                                    <tr>
+                                        <th class="header info">Date</th>
+                                        <th class="header info">Employee</th>
+                                        <th class="header info">Leave Reason</th>
+                                        <th class="header info">Time Check In</th>
+                                        <th class="header info">Time Check Out</th>
+                                        <th class="header info">Worked Hours</th>
+                                        <th class="header info">Overtime Hours</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="attendances" t-as="at">
+                                        <tr>
+                                            <td><span t-field="at.date"/></td>
+                                            <td><span t-field="at.employee_id"/></td>
+                                            <td><span t-field="at.leave_reason"/></td>
+                                            <td><span t-field="at.time_check_in"/></td>
+                                            <td><span t-field="at.time_check_out"/></td>
+                                            <td><span t-field="at.worked_hours"/></td>
+                                            <td><span t-field="at.overtime_hours"/></td>
+                                            <t t-set="total_worked_hours" t-value="at.worked_hours + total_worked_hours"/>
+                                            <t t-set="total_overtime_hours" t-value="at.overtime_hours + total_overtime_hours"/>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-4 col-xs-offset-8">
+                            <strong>Total Worked Hours: </strong> <span t-esc="total_worked_hours"/>
+                            <br/>
+                            <strong>Total Overtime Hours: </strong> <span t-esc="total_overtime_hours"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
