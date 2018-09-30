@@ -23,7 +23,7 @@ class AttendancesWizard(models.TransientModel):
 
     def _print_report(self, data):
         data['form'].update(self.read(['desde', 'hasta','file_format','employee_id','type'])[0])
-        return self.env.ref('hr_attendance_report.attendances_report_action').report_action(self, data)
+        return self.env.ref('hr_attendance_report_worked_hours.attendances_report_action').report_action(self, data)
 
 class ReportAttendanceWizard(models.AbstractModel):
     _name = 'report.hr_attendance_report_worked_hours.attendance_report'
