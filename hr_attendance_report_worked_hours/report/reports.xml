@@ -7,8 +7,8 @@
             model="hr_attendance_report.hr_attendances_wizard_report"
             string="Attendances Report"
             report_type="qweb-pdf"
-            name="hr_attendance_report.attendance_report"
-            file="hr_attendance_report.attendance_report_file"
+            name="hr_attendance_report_worked_hours.attendance_report"
+            file="hr_attendance_report_worked_hours.attendance_report_file"
             attachment_use="True"
         />
 

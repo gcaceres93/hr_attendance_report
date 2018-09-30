@@ -8,7 +8,8 @@
                     <group>
                         <field name="start_date"/>
                         <field name="end_date"/>
-                        <field name="employee_id"/>
+                        <field name="type" widget="radio"/>
+                        <field name="employee_id" attrs="{'invisible': [('type','=','all')]}"/>
                         <field name="file_format"/>
                     </group>
                     <footer>
@@ -20,7 +21,7 @@
         </record>
 
         <record id="attendance_report_date_range_action" model="ir.actions.act_window">
-            <field name="name">Attendances Report Wizard Action</field>
+            <field name="name">Attendances Report by date range and worked hours</field>
             <field name="res_model">hr_attendance_report.hr_attendances_wizard_report</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_type">form</field>
@@ -31,7 +32,6 @@
 
         </record>
 
-        <menuitem parent="hr_attendance.menu_hr_attendance_root" name="Attendances Reports" id="attendances_report_submenu"/>
-        <menuitem parent="attendances_report_submenu" action="attendance_report_date_range_action" name="Attendances Report date range" id="attendances_report_submenu_date_range"/>
+        <menuitem parent="hr_attendance.menu_hr_attendance_report" action="attendance_report_date_range_action" name="Attendances Report by date range and worked hours" id="attendances_report_submenu_date_range"/>
     </data>
 </odoo>

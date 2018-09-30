@@ -3,7 +3,7 @@
 
 
 {   'author' : 'Rapidsoft SA',
-    'name': 'Attendances Report',
+    'name': 'Attendances Report Date Range',
     'version': '1.0',
     'category': 'Human Resources',
     'summary': 'Generate employee attendances report',
@@ -12,10 +12,10 @@ This module aims to generate employee attendances report, including ausences.
 ==================================================
 
 Generate report of the attendances of the employees on the basis of the
-actions(Check in/Check out) performed by them and the related ausences with a date range. 
+actions(Check in/Check out) performed by them and the related ausences with a date range and worked hours. 
        """,
     'website': 'http://rapidsoft.com.py',
-    'depends': ['hr','hr_holidays'],
+    'depends': ['hr','hr_holidays','hr_attendance'],
     'data': [
         'report/reports.xml',
         'report/hr_attendances_report.xml',
