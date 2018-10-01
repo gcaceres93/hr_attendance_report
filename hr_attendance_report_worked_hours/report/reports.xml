@@ -4,11 +4,21 @@
          <!-- QWeb Reports -->
         <report
             id="attendances_report_action"
-            model="hr_attendance_report.hr_attendances_wizard_report"
+            model="hr_attendance_worked_hours_wizard"
             string="Attendances Report"
             report_type="qweb-pdf"
             name="hr_attendance_report_worked_hours.attendance_report"
             file="hr_attendance_report_worked_hours.attendance_report_file"
+            attachment_use="True"
+        />
+
+        <report
+            id="attendances_report_xlsx_action"
+            model="hr_attendance_worked_hours_wizard"
+            string="Print to XLSX"
+            report_type="xlsx"
+            name="hr_attendance_report_worked_hours.attendance_report_xlsx"
+            file="attendances_report"
             attachment_use="True"
         />
 

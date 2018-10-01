@@ -7,7 +7,7 @@ import datetime
 
 class AttendancesWizard(models.TransientModel):
 
-    _name="hr_attendance_report.hr_attendances_wizard_report"
+    _name="hr_attendance_worked_hours_wizard"
 
     start_date = fields.Datetime(string="Start Date",required=True)
     end_date = fields.Datetime(string="End Date",required=True)
@@ -23,7 +23,12 @@ class AttendancesWizard(models.TransientModel):
 
     def _print_report(self, data):
         data['form'].update(self.read(['desde', 'hasta','file_format','employee_id','type'])[0])
-        return self.env.ref('hr_attendance_report_worked_hours.attendances_report_action').report_action(self, data)
+        if self.file_format == 'pdf':
+            return self.env.ref('hr_attendance_report_worked_hours.attendances_report_action').report_action(self, data)
+        else:
+            return self.env.ref('hr_attendance_report_worked_hours.attendances_report_xlsx_action').report_action(self, data)
+
+
 
 class ReportAttendanceWizard(models.AbstractModel):
     _name = 'report.hr_attendance_report_worked_hours.attendance_report'
@@ -64,11 +69,8 @@ class ReportAttendanceWizard(models.AbstractModel):
                         res= self.env['hr.attendances.report.transient'].create(data)
                         attendances_list.append(res)
                     else:
-                        print("***** FECHA: *****", date)
                         leaves = self.env['hr.holidays'].search([('date_from_format','<=',date),('date_to_format','>=',date),('state','=','validate'),('employee_id','=',docs.employee_id.id)])
                         if leaves:
-                            print("***** FECHA: *****",date)
-                            print("***** FECHA PROYECTO *****",leaves.date_from_format)
                             date_check = date
                             employee_id = leaves.employee_id.id
                             leave_reason = leaves.name
@@ -123,6 +125,78 @@ class ReportAttendanceWizard(models.AbstractModel):
                 'employees': employees
             }
         return docargs
+
+class ReportAttendanceXLSXWizard(models.AbstractModel):
+    _name = 'report.hr_attendance_report_worked_hours.attendance_report_xlsx'
+    _inherit = 'report.report_xlsx.abstract'
+
+    def generate_xlsx_report(self, workbook, data, wizard):
+        attendances_list = list()
+        i = 3
+        # Create a format to use in the merged range.
+        merge_format = workbook.add_format({
+            'bold': 1,
+            'border': 1,
+            'align': 'center',
+            'valign': 'vcenter',
+            'fg_color': '#F15F40',
+            'font_color': 'white'})
+        bold = workbook.add_format({'bold': True, 'fg_color': 'gray', 'align': 'center'})
+        border = workbook.add_format({'border': 1})
+        if wizard.type=="employee":
+            sheet = workbook.add_worksheet(str(wizard.employee_id.name))
+            sheet.merge_range('A1:G1', 'Attendance Report By Employee', merge_format)
+            sheet.merge_range('A2:G2', 'Employee:'+str(wizard.employee_id.name), merge_format)
+            sheet.set_column('A:G', 25)
+            sheet.write(2, 0, 'Date', bold)
+            sheet.write(2, 1, 'Employee', bold)
+            sheet.write(2, 2, 'Leave reason', bold)
+            sheet.write(2, 3, 'Check in', bold)
+            sheet.write(2, 4, 'Check out', bold)
+            sheet.write(2, 5, 'Worked Hours', bold)
+            sheet.write(2, 6, 'Overtime Hours', bold)
+            attendances_list = wizard.employee_id.getAttendances(wizard.start_date,wizard.end_date) #get all attendances for employee
+            if attendances_list:
+                for att in attendances_list:
+                    sheet.write(i, 0, att.date,border)
+                    sheet.write(i, 1, att.employee_id.name,border)
+                    sheet.write(i, 2, att.leave_reason,border)
+                    sheet.write(i, 3, att.time_check_in,border)
+                    sheet.write(i, 4, att.time_check_out,border)
+                    sheet.write(i, 5, att.worked_hours, border)
+                    sheet.write(i, 6, att.overtime_hours, border)
+                    i += 1
+        else:
+            employees = self.env['hr.employee'].search([('active','=',True)])
+            if employees:
+                for e in employees:
+                    sheet = workbook.add_worksheet(str(e.name))
+                    sheet.merge_range('A1:G1', 'Attendance Report', merge_format)
+                    sheet.merge_range('A2:G2', 'Employee:' + str(e.name), merge_format)
+                    sheet.set_column('A:G', 25)
+                    sheet.write(2, 0, 'Date', bold)
+                    sheet.write(2, 1, 'Employee', bold)
+                    sheet.write(2, 2, 'Leave reason', bold)
+                    sheet.write(2, 3, 'Check in', bold)
+                    sheet.write(2, 4, 'Check out', bold)
+                    sheet.write(2, 5, 'Worked Hours', bold)
+                    sheet.write(2, 6, 'Overtime Hours', bold)
+                    attendances_list = e.getAttendances(wizard.start_date,wizard.end_date)
+                    if attendances_list:
+                        for att in attendances_list:
+                            sheet.write(i, 0, att.date, border)
+                            sheet.write(i, 1, att.employee_id.name, border)
+                            sheet.write(i, 2, att.leave_reason, border)
+                            sheet.write(i, 3, att.time_check_in, border)
+                            sheet.write(i, 4, att.time_check_out, border)
+                            sheet.write(i, 5, att.worked_hours, border)
+                            sheet.write(i, 6, att.overtime_hours, border)
+                            i += 1
+                    i = 3
+
+
+
+
 
 
 

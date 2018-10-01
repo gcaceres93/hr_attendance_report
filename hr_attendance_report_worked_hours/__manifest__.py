@@ -15,7 +15,7 @@ Generate report of the attendances of the employees on the basis of the
 actions(Check in/Check out) performed by them and the related ausences with a date range and worked hours. 
        """,
     'website': 'http://rapidsoft.com.py',
-    'depends': ['hr','hr_holidays','hr_attendance','att_manager_module'],
+    'depends': ['base','hr','hr_holidays','hr_attendance','att_manager_module','report_xlsx'],
     'data': [
         'report/reports.xml',
         'report/hr_attendances_report.xml',
