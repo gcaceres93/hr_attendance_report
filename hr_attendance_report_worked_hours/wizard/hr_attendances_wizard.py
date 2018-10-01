@@ -194,13 +194,6 @@ class ReportAttendanceXLSXWizard(models.AbstractModel):
                             i += 1
                     i = 3
 
-
-
-
-
-
-
-
 class AttendancesTransReportModel(models.TransientModel):
     _name = 'hr.attendances.report.transient'
 

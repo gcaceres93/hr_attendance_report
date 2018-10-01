@@ -6,23 +6,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-30 05:06+0000\n"
-"PO-Revision-Date: 2018-09-30 01:16-0400\n"
+"POT-Creation-Date: 2018-10-01 01:46+0000\n"
+"PO-Revision-Date: 2018-09-30 21:47-0400\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
-"Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: es\n"
 "X-Generator: Poedit 2.0.6\n"
 
 #. module: hr_attendance_report_worked_hours
 #: model:ir.ui.view,arch_db:hr_attendance_report_worked_hours.attendance_report
 msgid ""
 "<br/>\n"
-"                                        <strong>Total Overtime Hours: </"
-"strong>"
+"                                        <strong>Total Overtime Hours: </strong>"
 msgstr ""
 "<br/>\n"
 "                                        <strong>Total Horas Extras: </strong>"
@@ -47,6 +46,16 @@ msgid "<strong>Total Worked Hours: </strong>"
 msgstr "<strong>Total Horas Trabajadas: </strong>"
 
 #. module: hr_attendance_report_worked_hours
+#: selection:hr_attendance_worked_hours_wizard,type:0
+msgid "All"
+msgstr "Todos"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model,name:hr_attendance_report_worked_hours.model_hr_attendance
+msgid "Attendance"
+msgstr "Asistencias"
+
+#. module: hr_attendance_report_worked_hours
 #: model:ir.actions.report,name:hr_attendance_report_worked_hours.attendances_report_action
 msgid "Attendances Report"
 msgstr "Reporte de Asistencias"
@@ -63,11 +72,29 @@ msgid "Attendances Report by date range and worked hours"
 msgstr "Asistencias por rango de fechas y horas trabajadas"
 
 #. module: hr_attendance_report_worked_hours
+#: selection:hr_attendance_worked_hours_wizard,type:0
+msgid "By Employee"
+msgstr "Por Empleado"
+
+#. module: hr_attendance_report_worked_hours
 #: model:ir.ui.view,arch_db:hr_attendance_report_worked_hours.hr_attendances_wizard_view
 msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_create_uid
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_create_date
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_date
 #: model:ir.ui.view,arch_db:hr_attendance_report_worked_hours.attendance_report
 msgid "Date"
 msgstr "Fecha"
@@ -83,15 +110,35 @@ msgid "Date To Format"
 msgstr "Date To Format"
 
 #. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_display_name
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_display_name
 #: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_report_hr_attendance_report_worked_hours_attendance_report_display_name
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_report_hr_attendance_report_worked_hours_attendance_report_xlsx_display_name
 msgid "Display Name"
-msgstr "Nombre a Mostrar"
+msgstr "Nombre mostrado"
 
 #. module: hr_attendance_report_worked_hours
 #: model:ir.model,name:hr_attendance_report_worked_hours.model_hr_employee
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_employee_id
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_employee_id
 #: model:ir.ui.view,arch_db:hr_attendance_report_worked_hours.attendance_report
 msgid "Employee"
 msgstr "Empleado"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_end_date
+msgid "End Date"
+msgstr "Fecha Final"
+
+#. module: hr_attendance_report_worked_hours
+#: selection:hr_attendance_worked_hours_wizard,file_format:0
+msgid "Excel"
+msgstr "Excel"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_file_format
+msgid "File Format"
+msgstr "Formato del archivo"
 
 #. module: hr_attendance_report_worked_hours
 #: model:ir.ui.view,arch_db:hr_attendance_report_worked_hours.hr_attendances_wizard_view
@@ -99,14 +146,32 @@ msgid "Generate"
 msgstr "Generar"
 
 #. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_id
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_id
 #: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_report_hr_attendance_report_worked_hours_attendance_report_id
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_report_hr_attendance_report_worked_hours_attendance_report_xlsx_id
 msgid "ID"
 msgstr "ID"
 
 #. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard___last_update
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient___last_update
 #: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_report_hr_attendance_report_worked_hours_attendance_report___last_update
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_report_hr_attendance_report_worked_hours_attendance_report_xlsx___last_update
 msgid "Last Modified on"
-msgstr "Última Modificación en"
+msgstr "Última modificación en"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_write_uid
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_write_uid
+msgid "Last Updated by"
+msgstr "Última Actualización por"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_write_date
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
 
 #. module: hr_attendance_report_worked_hours
 #: model:ir.model,name:hr_attendance_report_worked_hours.model_hr_holidays
@@ -119,9 +184,30 @@ msgid "Leave Reason"
 msgstr "Motivo de Ausencia"
 
 #. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_leave_reason
+msgid "Leave reason"
+msgstr "Motivo de ausencis"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_overtime_hours
 #: model:ir.ui.view,arch_db:hr_attendance_report_worked_hours.attendance_report
 msgid "Overtime Hours"
 msgstr "Horas extras"
+
+#. module: hr_attendance_report_worked_hours
+#: selection:hr_attendance_worked_hours_wizard,file_format:0
+msgid "PDF"
+msgstr "PDF"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.actions.report,name:hr_attendance_report_worked_hours.attendances_report_xlsx_action
+msgid "Print to XLSX"
+msgstr "Print to XLSX"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_start_date
+msgid "Start Date"
+msgstr "Fecha de Inicio"
 
 #. module: hr_attendance_report_worked_hours
 #: model:ir.ui.view,arch_db:hr_attendance_report_worked_hours.attendance_report
@@ -134,6 +220,27 @@ msgid "Time Check Out"
 msgstr "Hora de salida"
 
 #. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_time_check_in
+msgid "Time check in"
+msgstr "Time check in"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_time_check_out
+msgid "Time check out"
+msgstr "Time check out"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_overtime_hours
+msgid "Total Overtime Hours"
+msgstr "Total Overtime Hours"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendance_worked_hours_wizard_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model.fields,field_description:hr_attendance_report_worked_hours.field_hr_attendances_report_transient_worked_hours
 #: model:ir.ui.view,arch_db:hr_attendance_report_worked_hours.attendance_report
 msgid "Worked Hours"
 msgstr "Horas trabajadas"
@@ -144,16 +251,21 @@ msgid "hr.attendances.report.transient"
 msgstr "hr.attendances.report.transient"
 
 #. module: hr_attendance_report_worked_hours
-#: model:ir.model,name:hr_attendance_report_worked_hours.model_hr_attendance_report_hr_attendances_wizard_report
-msgid "hr_attendance_report.hr_attendances_wizard_report"
-msgstr "hr_attendance_report.hr_attendances_wizard_report"
+#: model:ir.model,name:hr_attendance_report_worked_hours.model_hr_attendance_report_worked_hours_hr_attendances_wizard_report
+msgid "hr_attendance_report_worked_hours.hr_attendances_wizard_report"
+msgstr "hr_attendance_report_worked_hours.hr_attendances_wizard_report"
 
 #. module: hr_attendance_report_worked_hours
-#: model:ir.model,name:hr_attendance_report_worked_hours.model_report_hr_attendance_report_attendance_report
-msgid "report.hr_attendance_report.attendance_report"
-msgstr "report.hr_attendance_report.attendance_report"
+#: model:ir.model,name:hr_attendance_report_worked_hours.model_hr_attendance_worked_hours_wizard
+msgid "hr_attendance_worked_hours_wizard"
+msgstr "hr_attendance_worked_hours_wizard"
 
 #. module: hr_attendance_report_worked_hours
 #: model:ir.model,name:hr_attendance_report_worked_hours.model_report_hr_attendance_report_worked_hours_attendance_report
 msgid "report.hr_attendance_report_worked_hours.attendance_report"
 msgstr "report.hr_attendance_report_worked_hours.attendance_report"
+
+#. module: hr_attendance_report_worked_hours
+#: model:ir.model,name:hr_attendance_report_worked_hours.model_report_hr_attendance_report_worked_hours_attendance_report_xlsx
+msgid "report.hr_attendance_report_worked_hours.attendance_report_xlsx"
+msgstr "report.hr_attendance_report_worked_hours.attendance_report_xlsx"
